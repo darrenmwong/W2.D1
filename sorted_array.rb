@@ -8,8 +8,7 @@ class SortedArray
   end
 
   def add(new_ele)
-    # @internal_arr.insert(first_larger_index(new_ele), new_ele)
-     @internal_arr.insert(first_larger_index(new_elem, 0, @internal_arr.size), new_elem)
+    @internal_arr.insert(first_larger_index(new_ele), new_ele)
 
   end
 
@@ -19,33 +18,10 @@ class SortedArray
 
   def [](index)
     return @internal_arr[index]
-  
-     # return first_larger_index(index, start_ind=0, end_ind=@internal_arr.size)
-    # adding_index = @internal_arr.index {|x| x(index)}
 
   end
 
   def first_larger_index(target, start_ind=0, end_ind=@internal_arr.size)
-
-  # i = start_ind
-  #   @internal_arr.slice(start_ind..end_ind).each { |x| 
-  #     i += 1 if target > x
-  #   }
-  #   return i
-  # end
-
-
-  #   array = @internal_arr.slice(start_ind..end_ind)
-  #   i = start_ind
-
-  #   array.each do |x|
-  #     i += 1 if target > x
-  #   end
-
-  #   i
-  # end
-
-
 
     mid_index = (start_ind + end_ind)/2
     if start_ind >= end_ind
@@ -61,11 +37,6 @@ class SortedArray
 
 
   def index(target)
-     return_index = first_larger_index(target)
-    if @internal_arr[return_index] == target
-      return_index
-    else
-      target = nil
-    end
+    @internal_arr.find_index(target)
 end
 end
